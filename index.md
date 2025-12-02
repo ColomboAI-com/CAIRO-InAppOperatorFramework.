@@ -157,7 +157,7 @@ const cairo = new Cairo({ apiKey: process.env.CAIRO_API_KEY });
 for await (const chunk of cairo.askStream("Process this form step by step")) {
   console.log(chunk.data);
 }
-🌐 Framework Examples
+# 🌐 Framework Examples
 Next.js (Recommended)
 // app/api/cairo/route.ts
 import { Cairo } from 'cairo-sdk';
@@ -210,7 +210,7 @@ app.post('/api/cairo', async (req, res) => {
 });
 
 app.listen(3000);
-🤖 When to Use ask() vs askStream()
+# 🤖 When to Use ask() vs askStream()
 // Use ask() for:
 const result = await cairo.ask("Qualify this lead");         // background automation
 const descriptions = await Promise.all(                      // batch processing
@@ -225,7 +225,7 @@ for await (const chunk of cairo.askStream(userMessage)) {    // chat interfaces
 for await (const chunk of cairo.askStream("Write detailed report")) { // long-form
   updateProgress(chunk);
 }
-🧭 How Cairo SDK Routes Requests
+# 🧭 How Cairo SDK Routes Requests
 The SDK automatically routes each request to Skills or MC-1 based on complexity and confidence.
 
 Your App → Cairo SDK → Intelligent Routing
@@ -239,13 +239,13 @@ Complex queries → MC-1 advanced LLM
 
 You don’t have to manually choose; the SDK optimizes cost and latency for you
 
-🔐 Authentication
+# 🔐 Authentication
 Every request must include an API key as a Bearer token:
 
 Authorization: Bearer YOUR_API_KEY
 You can manage keys in the Developer Portal.
 
-📦 Response Format
+# 📦 Response Format
 Standard successful response structure:
 
 {
@@ -290,7 +290,7 @@ INVALID_REQUEST – malformed request
 
 TOOL_ERROR – tool execution failed
 
-🧱 Architecture (High-Level)
+# 🧱 Architecture (High-Level)
 Request flow:
 
 API request → Bearer token auth
@@ -313,7 +313,7 @@ PostgreSQL for storage
 
 LRU caching for sub-10ms retrieval
 
-🧰 Skills Registry (Built-In Skills)
+# 🧰 Skills Registry (Built-In Skills)
 CAIRO ships with pre-built workflows:
 
 complete_checkout – e-commerce checkout flows
@@ -326,7 +326,7 @@ fill_form_with_data – form automation
 
 You can extend or replace these with your own skills.
 
-✅ Best Practices
+# ✅ Best Practices
 Some recommendations for production use:
 
 Use clear, specific queries
@@ -343,7 +343,7 @@ Use streaming for long-running tasks
 
 Never expose API keys in client-side code
 
-📈 Performance Benchmarks
+# 📈 Performance Benchmarks
 Observed metrics:
 
 Query latency: ~16.5 ms (well below 50 ms target)
@@ -354,7 +354,7 @@ Cache hit rate: ~95%+
 
 Memory footprint: <100 MB (under 200 MB budget)
 
-🛠 Troubleshooting
+# 🛠 Troubleshooting
 “Invalid API Key”
 
 Verify the key from the platform
@@ -378,7 +378,7 @@ Ensure Node.js ≥ 18
 
 Confirm your API route streams properly
 
-📜 License
+# 📜 License
 © 2025 ColomboAI. All rights reserved.
 
 For support, visit the ColomboAI Platform or contact the team via the channels listed there.
